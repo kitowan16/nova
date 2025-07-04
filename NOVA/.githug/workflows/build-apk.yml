@@ -22,6 +22,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
+      # --- Nuevo paso para permisos ---
+      - name: Grant execute permission to Gradle Wrapper
+        run: chmod +x ./gradlew
+
       - name: Build Release APK
         run: ./gradlew :app:assembleRelease --stacktrace
 
