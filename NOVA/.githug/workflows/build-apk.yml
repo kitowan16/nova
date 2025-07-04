@@ -13,11 +13,11 @@ jobs:
       - uses: actions/checkout@v3
 
       # Si gradlew está en la raíz, usa "."
-      - name: Give gradlew permission
-        run: chmod +x ./gradlew
+        - name: Give gradlew permission
+        run: cd app && chmod +x ./gradlew
 
       - name: Build APK
-        run: ./gradlew build
+        run: cd app && ./gradlew build
     steps:
       # 1) Clonar el código
       - uses: actions/checkout@v4
