@@ -9,26 +9,33 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
 
+    steps:
+      # 1) Clonar el código
+      - uses: actions/checkout@v4
+
+      # 2) Configurar JDK 17
       - name: Setup JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: '17'
 
+      # 3) Configurar Android SDK
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      # --- Nuevo paso para permisos ---
-      - name: Grant execute permission to Gradle Wrapper
-        run: chmod +x ./gradlew
+      # 4) Configurar Gradle (sin wrapper)
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: '8.4'
 
+      # 5) Construir la APK en modo Release
       - name: Build Release APK
-        run: ./gradlew :app:assembleRelease --stacktrace
+        run: gradle :app:assembleRelease --no-daemon --stacktrace
 
+      # 6) Subir el artefacto .apk
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
