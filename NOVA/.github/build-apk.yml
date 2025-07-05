@@ -1,7 +1,7 @@
 name: Build NOVA APK
 
 # ───────────────────────────────────────────────────────────────
-# Se dispara en cada push o pull-request a mai
+# Se dispara en cada push o pull-request a main
 # y también manualmente desde el botón “Run workflow”.
 # ───────────────────────────────────────────────────────────────
 on:
@@ -48,4 +48,4 @@ jobs:
           name: nova-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error     # Falla el job si no existe el APK
-          retention-days: 7            # Opcional: días que se guarda el artefacto
+          retention-days: 7            # Opcional: días que se guarda el artefac
