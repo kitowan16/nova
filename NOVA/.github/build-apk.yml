@@ -1,7 +1,7 @@
 name: Build NOVA APK
 
 # ───────────────────────────────────────────────────────────────
-# Se dispara en cada push o pull-request a mai
+# Se dispara en cada push o pull-request a main
 # y también manualmente desde el botón “Run workflow”.
 # ───────────────────────────────────────────────────────────────
 on:
